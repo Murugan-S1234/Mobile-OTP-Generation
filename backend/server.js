@@ -6,7 +6,7 @@ const crypto = require("crypto");
 const cors = require("cors");
 const twilio = require("twilio");
 
-dotenv.config();
+require('dotenv').config();
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
@@ -17,9 +17,12 @@ const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TO
 // MongoDB Connection
 
 
-mongoose.connect('mongodb://localhost:27017/yourDatabase')
-  .then(() => console.log('MongoDB Connected'))
-  .catch((err) => console.error('MongoDB connection error:', err));
+
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log('MongoDB connected successfully'))
+  .catch((err) => console.error('MongoDB connection failed:', err));
+
 
 
 // User Schema
@@ -29,6 +32,17 @@ const userSchema = new mongoose.Schema({
   otpExpiry: Date,
 });
 const User = mongoose.model("User", userSchema);
+
+
+const path = require('path');
+
+// Serve React frontend
+app.use(express.static(path.join(__dirname, 'frontend/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
+});
+
 
 // Route: Send OTP
 app.post("/send-otp", async (req, res) => {

@@ -61,7 +61,7 @@ app.post("/send-otp", async (req, res) => {
     );
 
     await client.messages.create({
-      body: `Your OTP is ${otp}. It will expire in 5 minutes.`,
+      body: `Hello I'm Murugan Your OTP is ${otp}. It will expire in 5 minutes.`,
       from: process.env.TWILIO_PHONE_NUMBER,
       to: mobile,
     });

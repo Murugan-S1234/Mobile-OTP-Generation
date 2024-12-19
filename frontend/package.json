@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
+  "homepage": "https://Murugan-S1234.github.io/Mobile-OTP-Generation",
   "private": true,
   "dependencies": {
     "axios": "^1.7.9",
@@ -15,9 +16,11 @@
     "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider CHOKIDAR_USEPOLLING=true react-scripts start --host 0.0.0.0",
     "dev": "concurrently \"npm start\" \"npm run client\"",
     "client": "set NODE_OPTIONS=--openssl-legacy-provider && npm start --prefix ../frontend",
-    "build": "react-scripts build",
+    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build --depth 1"
   },
   "eslintConfig": {
     "extends": [
@@ -38,6 +41,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "gh-pages": "^6.2.0"
   }
 }

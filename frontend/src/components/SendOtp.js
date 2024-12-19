@@ -7,7 +7,7 @@ function SendOtp({ setStep, setMobile }) {
 
   const handleSendOtp = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/send-otp", { mobile: mobileInput });
+      const response = await axios.post("${process.env.REACT_APP_BACKEND_URL}/send-otp", { mobile: mobileInput });
       setMessage(response.data.message);
       setMobile(mobileInput);
       setStep(2);

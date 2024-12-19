@@ -26,6 +26,7 @@ function SendOtp({ setStep, setMobile }) {
           onChange={(e) => setMobileInput(e.target.value)}
           placeholder="Enter your mobile number"
           style={{ marginLeft: "10px", padding: "5px" }}
+          required
         />
       </label>
       <button onClick={handleSendOtp} style={{ marginLeft: "10px", padding: "5px 10px" }}>

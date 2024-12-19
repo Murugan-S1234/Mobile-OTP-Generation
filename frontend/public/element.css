@@ -1,0 +1,38 @@
+#root{
+    background-color: rgb(240, 240, 240); height: fit-content; width: fit-content;
+    border-radius: 18px;
+}
+
+#main{
+   height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+body{
+    height: 97vh;
+}
+
+#note{
+    display: flex;
+    align-items: center;
+    margin: 1rem 1rem 0 1rem;
+    justify-content: space-between;
+    width: 96%;
+}
+
+#pa{
+    background-color: white;
+   margin-right: 3rem;
+   border-radius: 12px;
+   padding: 0 15px 0 15px;
+   display: flex;
+   justify-content: center;
+   flex-wrap: wrap;
+   width: 100%;
+}
+
+#img{
+    width: 10%;
+}
+

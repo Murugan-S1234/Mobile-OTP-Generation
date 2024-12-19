@@ -7,7 +7,7 @@ function ValidateOtp({ mobile }) {
 
   const handleValidateOtp = async () => {
     try {
-      const response = await axios.post("${process.env.REACT_APP_BACKEND_URL}/validate-otp", { mobile, otp });
+      const response = await axios.post( `${process.env.REACT_APP_BACKEND_URL}/validate-otp`, { mobile, otp });
       setMessage(response.data.message);
     } catch (err) {
       setMessage(err.response?.data?.message || "Error validating OTP");
